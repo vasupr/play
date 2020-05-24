@@ -63,4 +63,18 @@ public class GameResource {
         }
     }
 
+    @POST
+    @Path("conversions/ktom/{kilometeres}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public double  Kilometeres_to_Miles(@PathParam("kilometeres") String kilometeres) {
+        LOG.info("Hitting the Kilometeres_to_Miles Request..." + kilometeres);
+        try {
+            double f = Double.parseDouble(kilometeres);
+            return (double) ( 0.621 * f);
+        } catch (NumberFormatException ex) {
+            LOG.info("Eneter value is not valid");
+            return 0;
+        }
+    }
+
 }
