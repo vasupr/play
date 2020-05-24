@@ -46,7 +46,21 @@ public class GameResource {
             LOG.info("Eneter value is not valid");
             return 0;
         }
-    }
 
+
+    }
+    @POST
+    @Path("conversions/mtok/{miles}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public double  Miles_to_Kilometeres(@PathParam("miles") String miles) {
+        LOG.info("Hitting the Miles_to_Kilometeres Request..." + miles);
+        try {
+            double f = Double.parseDouble(miles);
+            return (double) (f * 1.6);
+        } catch (NumberFormatException ex) {
+            LOG.info("Eneter value is not valid");
+            return 0;
+        }
+    }
 
 }
